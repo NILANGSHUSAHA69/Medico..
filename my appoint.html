@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Appointments</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #2980b9, #6dd5fa);
+        margin: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    header {
+        background: rgba(255,255,255,0.2);
+        padding: 15px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        backdrop-filter: blur(5px);
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        background: rgba(255,255,255,0.1);
+        padding: 10px 0;
+        backdrop-filter: blur(5px);
+    }
+
+    nav button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        background: rgba(255,255,255,0.3);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        color: white;
+        transition: 0.3s;
+    }
+
+    nav button:hover { background: rgba(255,255,255,0.5); }
+
+    h2 { text-align: center; margin-top: 20px; }
+
+    .card {
+        background: rgba(255,255,255,0.2);
+        padding: 15px;
+        margin: 15px auto;
+        border-radius: 10px;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    .card span { display: block; margin: 5px 0; }
+</style>
+</head>
+<body>
+
+<header>Patient Dashboard</header>
+
+<nav>
+    <button onclick="window.location.href='book_appointment.html'">Book Appointment</button>
+    <button onclick="alert('Already on My Appointments')">My Appointments</button>
+    <button onclick="alert('Go to Upload Reports')">Upload Reports</button>
+    <button onclick="alert('Go to Chat / Video')">Chat / Video</button>
+    <button onclick="alert('Go to Health Records')">Health Records</button>
+    <button onclick="alert('Go to Profile Settings')">Profile Settings</button>
+</nav>
+
+<h2>My Appointments</h2>
+<div id="appointmentsList"></div>
+
+<script>
+    // Example static appointments data
+    const appointments = [
+        {doctor: "Dr. Rajiv Narang", date: "12 Sep 2025", time: "10:00 AM", status: "Upcoming"},
+        {doctor: "Dr. Anita Saxena", date: "05 Sep 2025", time: "11:00 AM", status: "Completed"},
+        {doctor: "Dr. K.K. Talwar", date: "20 Sep 2025", time: "02:00 PM", status: "Upcoming"}
+    ];
+
+    const appointmentsDiv = document.getElementById("appointmentsList");
+
+    appointments.forEach(app => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
+            <span><strong>Doctor:</strong> ${app.doctor}</span>
+            <span><strong>Date:</strong> ${app.date}</span>
+            <span><strong>Time:</strong> ${app.time}</span>
+            <span><strong>Status:</strong> ${app.status}</span>
+        `;
+        appointmentsDiv.appendChild(card);
+    });
+</script>
+
+</body>
+</html>
